@@ -30,8 +30,9 @@ class UIWidgetGroup: public UIWidget, public UIParent {
 
   public:
 
-    /** Create a widget group with a linked list of sub-widgets and a potential successor. */
-    UIWidgetGroup(UIWidget* firstChild,UIWidget* next=nullptr);
+    /** Create a widget group with a linked list of sub-widgets and a potential successor. 
+	  * The child widgets can be specified later using attachChildren()*/
+    UIWidgetGroup(UIWidget* firstChild=nullptr,UIWidget* next=nullptr);
 
     /** Default implementation of rendering a widget group is to render all of its sub-widgets. */
     UIArea* render(U8G2* display,bool force);
@@ -48,6 +49,10 @@ class UIWidgetGroup: public UIWidget, public UIParent {
     bool renderChildren;
     // Note: This is protected as UICards handles this on its own.
     // With a better abstraction, this could be made private.
+	
+	/** Used when the child widgets were not known at constructor time (maybe they are members of a derived WidgetGroup). 
+	 * does not request rendering, so it should really only be used in a derived constructor*/
+	void attachChildren(UIWidget* firstChild);
 
   private:
 
