@@ -80,6 +80,13 @@ void UIArea::shrink(UISize *diff) {
   bottom=max(top,bottom>diff->height?(uint16_t)(bottom-diff->height):(uint16_t)0);
 }
 
+void UIArea::shrink(uint16_t left, uint16_t top, uint16_t right, uint16_t bottom) {
+  this->left+=left;
+  this->right=max(this->left,(uint16_t)(this->right-right));
+  this->top+=top;
+  this->bottom=max(this->top,(uint16_t)(this->bottom-bottom));
+}
+
 UIPoint UIArea::alignedTopLeft(UIAlignment alignment,UISize *element) {
   uint16_t x=(alignment==UIAlignment::TopLeft || alignment==UIAlignment::CenterLeft || alignment==UIAlignment::BottomLeft)?left:
   (alignment==UIAlignment::TopCenter || alignment==UIAlignment::Center || alignment==UIAlignment::BottomCenter)?((right+left)-element->width)/2:
