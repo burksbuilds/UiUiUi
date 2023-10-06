@@ -10,12 +10,8 @@
 
 /* Create a widget group with a linked list of sub-widgets and a potential successor. */
 UIWidgetGroup::UIWidgetGroup(UIWidget* firstChild,UIWidget* next):
-UIWidget(next), firstChild(firstChild), rendered(), renderChildren(false) {
-  UIWidget* elem=firstChild;
-  while (elem) {
-    elem->setParent(this);
-    elem=elem->next;
-  }
+UIWidget(next), rendered(), renderChildren(false) {
+  attachChildren(firstChild);
 }
 
 /* Default implementation of rendering a widget group is to render all of its sub-widgets. */
@@ -37,6 +33,16 @@ void UIWidgetGroup::childNeedsRendering(UIWidget *child) {
   if (!renderChildren) {
     renderChildren=true;
     signalNeedsRendering();
+  }
+}
+
+void UIWidgetGroup::attachChildren(UIWidget* firstChild)
+{
+  this->firstChild = firstChild;
+  UIWidget* elem=firstChild;
+  while (elem) {
+    elem->setParent(this);
+    elem=elem->next;
   }
 }
 
