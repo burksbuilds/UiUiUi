@@ -16,10 +16,15 @@ UIBitmap smiley2 = UIBitmap(smiley_width, smiley_height, smiley_bits);
 UIBitmap smiley3 = UIBitmap(smiley_width, smiley_height, smiley_bits);
 UIBitmap smiley4 = UIBitmap(smiley_width, smiley_height, smiley_bits);
 
-UIBorder border1 = UIBorder(2,UIExpansion::None,UIExpansion::Both,&smiley1);
-UIBorder border2 = UIBorder(2,UIExpansion::Horizontal,UIExpansion::Both,&smiley2);
-UIBorder border3 = UIBorder(2,UIExpansion::Vertical,UIExpansion::Both,&smiley3);
-UIBorder border4 = UIBorder(2,UIExpansion::Both,UIExpansion::Both,&smiley4);
+UIEnvelope pad1 = UIEnvelope(UIExpansion::None, UIAlignment::Center, UISize(1,1), &smiley1);
+UIEnvelope pad2 = UIEnvelope(UIExpansion::Horizontal, UIAlignment::Center, UISize(1,1), &smiley2);
+UIEnvelope pad3 = UIEnvelope(UIExpansion::Vertical, UIAlignment::Center, UISize(1,1), &smiley3);
+UIEnvelope pad4 = UIEnvelope(UIExpansion::Both, UIAlignment::Center, UISize(1,1), &smiley4);
+
+UIBorder border1 = UIBorder(2,&pad1);
+UIBorder border2 = UIBorder(2,&pad2);
+UIBorder border3 = UIBorder(2,&pad3);
+UIBorder border4 = UIBorder(2,&pad4);
 
 UIEnvelope marg1 = UIEnvelope(UIExpansion::Both, UIAlignment::Center, UISize(1,1), &border1);
 UIEnvelope marg2 = UIEnvelope(UIExpansion::Both, UIAlignment::Center, UISize(1,1), &border2, &marg1);

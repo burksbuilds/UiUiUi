@@ -29,38 +29,19 @@ class UIBorder : public UIWidget, public UIParent {
 
     /** Create a border widget.
      *
-     * @param left Generate an visible frame of this thickness on the left side of the widget.
-     * @param top Generate an visible frame of this thickness on the top side of the widget.
-     * @param right Generate an visible frame of this thickness on the right side of the widget.
-     * @param bottom Generate an visible frame of this thickness on the bottom side of the widget.
-     * @param position move the border outward for the axes given by this parameter if more space is provided than requested.
-	 * @param expansion Report an enlarged preferred size to the caller for the axes given by this parameter.
-     * @param alignment Align the content widget this way if more space is provided than requested.
-     * @param content The content of the border. If empty, the frame renders around its allocated space.
-     * @param next Next widget on the same level as the border.
-     */
-    UIBorder(uint16_t left, uint16_t top, uint16_t right, uint16_t bottom,UIExpansion position=UIExpansion::Both,UIExpansion expansion=UIExpansion::Both, UIAlignment alignment=UIAlignment::Center,UIWidget* content=nullptr,UIWidget* next=nullptr);
-
-    /** Create a border widget.
-     *
-     * @param thickness Generate an visible frame of the specified uniform thickness around the content widget.
-     * @param position move the border outward for the axes given by this parameter if more space is provided than requested.
-	 * @param expansion Report an enlarged preferred size to the caller for the axes given by this parameter.
-     * @param alignment Align the content widget this way if more space is provided than requested.
+     * @param thickness Generate a visible frame of the specified horizontal and vertical thickness around the content widget.
      * @param content The content of the border. If empty, the border renders an empty area.
      * @param next Next widget on the same level as the border.
      */
-    UIBorder(uint16_t thickness,UIExpansion position,UIExpansion expansion, UIAlignment alignment,UIWidget* content=nullptr,UIWidget* next=nullptr);
+    UIBorder(UISize thickness ,UIWidget* content=nullptr,UIWidget* next=nullptr);
 
 /** Create a border widget.
      *
-     * @param thickness Generate an visible frame of the specified uniform thickness around the content widget.
-     * @param position move the border outward for the axes given by this parameter if more space is provided than requested.
-	 * @param expansion Report an enlarged preferred size to the caller for the axes given by this parameter.
+     * @param thickness Generate a visible frame of the specified uniform thickness around the content widget.
      * @param content The content of the border. If empty, the border renders an empty area.
      * @param next Next widget on the same level as the border.
      */
-    UIBorder(uint16_t thickness,UIExpansion position,UIExpansion expansion, UIWidget* content=nullptr,UIWidget* next=nullptr);
+    UIBorder(uint16_t thickness, UIWidget* content=nullptr,UIWidget* next=nullptr);
 
     
     /** Layout the border.
@@ -85,23 +66,13 @@ class UIBorder : public UIWidget, public UIParent {
 
   private:
 
-    /** Frame position strategy when more space is allocated than requested. */
-    UIExpansion position;
-	
-	/** Expansion strategy during computation of preferred size. */
-    UIExpansion expansion;
 
-    /** Alignment of inner content widget. */
-    UIAlignment alignment;
-
-    /** Border thickness, distinct for all 4 sides (kind of a hack to store them in this one parameter). */
-    UIArea thickness;
+    /** Border thickness, horizontal lines may be thicker than vertical lines. */
+    UISize thickness;
 
     /** Reference to the content widget of the border. */
     UIWidget* content;
-	
-	/** Area occupied by the content. */
-	UIArea contentDim;
+
 
 };
 

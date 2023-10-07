@@ -35,9 +35,9 @@
 #include "UIVerticalLine.h"
 #include "UICheckerboard.h"
 #include "UIEnvelope.h"
-#include "UIBorder.h"
 #include "UIProgressBar.h"
 #include "UIBitmap.h"
+#include "UIBorder.h"
 
 // Widget groups
 #include "UIWidgetGroup.h"
