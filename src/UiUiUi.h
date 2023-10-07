@@ -37,6 +37,7 @@
 #include "UIEnvelope.h"
 #include "UIProgressBar.h"
 #include "UIBitmap.h"
+#include "UIBorder.h"
 
 // Widget groups
 #include "UIWidgetGroup.h"
