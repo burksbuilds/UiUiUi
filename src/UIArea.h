@@ -83,9 +83,6 @@ class UIArea final {
 
     /** Shrink this area by the given width and height on each side (so diff is applied twice in each direction). */
     void shrink(UISize *diff);
-	
-	/** Shrink this area by the given distances on each side. */
-    void shrink(uint16_t left, uint16_t top, uint16_t right, uint16_t bottom);
 
     /** Return the top-left point of an area of the given element if that element is aligned as stated in the alignment. */
     UIPoint alignedTopLeft(UIAlignment alignment,UISize *element);
