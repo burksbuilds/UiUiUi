@@ -104,7 +104,7 @@ void UIProgressBar::computeFilledAreas(UIArea * filledArea, UIArea * unfilledAre
 	  unfilledArea->set(dim.left,dim.top,dim.right-barLength,dim.bottom);
 	  break;
     case UIDirection::DownToTop:
-	  filledArea->set(dim.left,dim.bottom-barLength,dim.left,dim.bottom);
+	  filledArea->set(dim.left,dim.bottom-barLength,dim.right,dim.bottom);
 	  unfilledArea->set(dim.left,dim.top,dim.right,dim.bottom-barLength);
 	  break;
     default:
